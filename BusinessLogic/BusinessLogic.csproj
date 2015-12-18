@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\DALDbManager.cs" />
     <Compile Include="DataAccess\DALManager.cs" />
+    <Compile Include="DatabaseStructure\DbInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
