@@ -234,6 +234,19 @@ namespace Sampo.Generics.DAL
             return dataSet;
         }
 
+        public DataTable ExecuteDataTable(string commandName, CommandType commandType, int commandTimeout = 30)
+        {
+            this.PrepareCommand(commandName, commandType, commandTimeout);
+            var dataAdapter = new TDataAdapter { SelectCommand = this.Command };
+            var dataTable = new DataTable();
+            this.SafeExecute(() =>
+            {
+                dataAdapter.Fill(dataTable);
+                this.FillOutputParameters();
+            });
+            return dataTable;
+        }
+
         public T ExecuteDataSet<T>(string storedProcedureName, string tblName, T result) where T : DataSet
         {
             this.PrepareCommand(storedProcedureName);
